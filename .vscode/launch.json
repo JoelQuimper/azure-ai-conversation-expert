@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Agent API",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-agent-api",
+            "program": "${workspaceFolder}/agent-api/bin/Debug/net8.0/agent-api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/agent-api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Expert Console",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-expert-console",
+            "program": "${workspaceFolder}/expert-console/bin/Debug/net8.0/expert-console.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/expert-console",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Start Both Projects",
+            "configurations": ["Agent API", "Expert Console"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1
+            }
+        }
+    ]
+}
