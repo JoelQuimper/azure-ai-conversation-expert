@@ -402,3 +402,5 @@ appsettings.Development*.json
 scrapbook-*.ps1
 team-app/*.zip
 team-app/manifest.json
+.github
+.vscode
